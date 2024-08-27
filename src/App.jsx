@@ -1,5 +1,8 @@
+// import {CustomerGluComponent} from "@customerglu/react-web-sdk";
 import "./styles.css";
-import { CustomerGluComponent } from "@customerglu/react-web-sdk";
+// import { CustomerGluComponent } from "@customerglu/react-web-sdk";
+
+import CustomerGluComponent from "./component/CustomerGluComponent"
 
 export default function App() {
   return (
@@ -14,8 +17,8 @@ export default function App() {
         }}
       >
         <CustomerGluComponent
-          gluToken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJnbHV0ZXN0LWNkZTJkZTU3LTNiNzEtNGJhOC1hODk4LWU3NDBlZjZiYmE4YSIsImdsdUlkIjoiNDA1N2M4OTYtMTc2MC00OGM3LThkYTUtNWZlN2I0OWExZDc3IiwiY2xpZW50IjoiN2IxOTEwYTQtNzMxYS00MmY2LTkyODQtMmU2NGRhNGM5MTRkIiwiZGV2aWNlSWQiOiJnbHV0ZXN0LWNkZTJkZTU3LTNiNzEtNGJhOC1hODk4LWU3NDBlZjZiYmE4YV9kZWZhdWx0IiwiZGV2aWNlVHlwZSI6ImRlZmF1bHQiLCJpc0xvZ2dlZEluIjp0cnVlLCJpYXQiOjE3MjM2NTczNzAsImV4cCI6MTc1NTE5MzM3MH0.2lApseyR7BW1UhqxDOAX3v7DrLT38KaUyB9deVH15kU"
-          userId="glutest-514b7c0f-9baa-42b8-9a39-2298e254e616"
+          gluToken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJnbHV0ZXN0LTI1OCIsImdsdUlkIjoiNmUwZTUwZDItMzQ1Mi00YTE1LTljMTMtM2YzZTJmZDA2NGQ3IiwiY2xpZW50IjoiN2IxOTEwYTQtNzMxYS00MmY2LTkyODQtMmU2NGRhNGM5MTRkIiwiZGV2aWNlSWQiOiJnbHV0ZXN0LTI1OF9kZWZhdWx0IiwiZGV2aWNlVHlwZSI6ImRlZmF1bHQiLCJpc0xvZ2dlZEluIjp0cnVlLCJpYXQiOjE3MjQ3NDEwOTksImV4cCI6MTc1NjI3NzA5OX0.q4CnB-foMnkVsQQgm7ijK8YcxskDLENDNTkwtgrZztQ"
+          userId="glutest-258"
           region="us"
         >
           <div></div>
