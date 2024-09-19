@@ -5,8 +5,7 @@ import { defineConfig } from "vite";
   export default defineConfig({
     plugins: [react()],
     server: {
-      host: '0.0.0.0',  // To make it accessible on the local network
-      port: 5173,
+      host: 'https://web-sdk-testing.vercel.app/',  // To make it accessible on the local network
     },
   });
   

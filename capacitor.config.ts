@@ -6,7 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   bundledWebRuntime: false,
   server: {
-    url: 'http://192.168.29.184:5173',  // Replace this with your local IP
+    url: 'https://web-sdk-testing.vercel.app/',  // Replace this with your local IP
     cleartext: true
   }
 };
