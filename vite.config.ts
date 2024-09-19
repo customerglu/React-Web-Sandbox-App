@@ -3,6 +3,10 @@ import { defineConfig } from "vite";
   
   // https://vitejs.dev/config/
   export default defineConfig({
-      plugins: [react()],
+    plugins: [react()],
+    server: {
+      host: '0.0.0.0',  // To make it accessible on the local network
+      port: 5173,
+    },
   });
   

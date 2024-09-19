@@ -24,7 +24,7 @@ const CustomerGluComponent = ({
       const script = document.createElement("script");
       region === "us"
         ? (script.src =
-            "http://127.0.0.1:8081/sdk.js")
+            "https://assets.customerglu.com/scripts/us/sdk/v5.7.1/sdk.js")
         : (script.src =
             "https://assets.customerglu.com/scripts/sdk/v5.5/sdk.js");
       script.async = true;
