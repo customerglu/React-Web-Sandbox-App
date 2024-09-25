@@ -6,6 +6,7 @@
   "main": "src/index.tsx",
   "dependencies": {
     "@capacitor/android": "^6.1.2",
+    "@capacitor/app-launcher": "^6.0.2",
     "@capacitor/cli": "^6.1.2",
     "@capacitor/core": "^6.1.2",
     "@capacitor/ios": "^6.1.2",
