@@ -19,7 +19,7 @@ const CustomerGluComponent = ({
     };
 
     eventEmitter.on("SDK_STATUS_COMPLETED", handleSDKStatusCompleted);
-
+    // https://assets.customerglu.com/scripts/us/sdk/v5.7.1/sdk.js
     if (!scriptLoadedRef.current) {
       const script = document.createElement("script");
       region === "us"

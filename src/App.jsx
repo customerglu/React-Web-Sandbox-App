@@ -1,6 +1,6 @@
-import {CustomerGluComponent} from "@customerglu/react-web-sdk";
+// import {CustomerGluComponent} from "@customerglu/react-web-sdk";
 import "./styles.css";
-
+import CustomerGluComponent from "./component/CustomerGluComponent";
 import {
     Route,
     Routes
@@ -12,29 +12,28 @@ import {
 } from "react";
 
 function Main() {
-    return ( <
-        div className = "App" >
-        <
-        div id = "embedId"
-        style = {
-            {
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-            }
-        } >
-        <
-        CustomerGluComponent gluToken = ""
-        userId = ""
-        region = "in" >
-        <
-        div > < /div> <
-        /CustomerGluComponent> <
-        /div>
+  return(
+  <div className="App">
+    <div
+      id="embedIdv3"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+      }}
+    >
+      <CustomerGluComponent
+          gluToken="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJnbHV0ZXN0LXMtdDcwMyIsImdsdUlkIjoiNWMxYWU1OWEtMDZhNC00ZjhlLWI4NjQtMTJlMmRlZTJjNjE5IiwiY2xpZW50IjoiN2IxOTEwYTQtNzMxYS00MmY2LTkyODQtMmU2NGRhNGM5MTRkIiwiZGV2aWNlSWQiOiJnbHV0ZXN0LXMtdDcwM19kZWZhdWx0IiwiZGV2aWNlVHlwZSI6ImRlZmF1bHQiLCJpc0xvZ2dlZEluIjp0cnVlLCJpYXQiOjE3Mjc3OTc3NjEsImV4cCI6MTc1OTMzMzc2MX0.fZ-u9n5YVJtEmudPIm-Lq-RwCglDbXDpAI8HH3RPjxg"
+          userId="glutest-s-t703"
+          region="us"
+        >
+        <div></div>
+      </CustomerGluComponent>
+    </div>
+    </div>
 
-        <
-        /div>
+       
     );
 }
 
@@ -45,13 +44,33 @@ function Main() {
 
 export default function App() {
 
-    const messageHandler = (event) => {
-        try {
-            // Parse the received message
-            if (event.origin !== "https://constellation-us.customerglu.com") {
-                return;
-            }
-            let eventData;
+  const messageHandler = (event) => {
+    try {
+    //  console.log(event);
+      // Parse the received message
+      if (event.origin !== "https://constellation.customerglu.com") {
+        return;
+      }
+      let eventData;
+  
+      // Check if event.data is a string or an object
+      if (typeof event.data === 'string') {
+        // Try to parse the string as JSON
+     
+        eventData = JSON.parse(event.data);
+      } else{
+        return
+      }
+      console.log(event);
+     // const eventData = JSON.parse(event.data);
+  
+      // Process the event data
+      if (eventData.eventName) {
+        // Handle different event types
+        switch (eventData.eventName) {
+          case "CLOSE":
+            // Handle your close logic
+            console.log( "eventData");
 
             // Check if event.data is a string or an object
             if (typeof event.data === 'string') {
@@ -75,7 +94,10 @@ export default function App() {
                 }
 
             }
-        } catch (error) {
+        } 
+      }
+    }
+    catch (error) {
             console.error("Error parsing event data:", error);
         }
     };
@@ -96,25 +118,11 @@ export default function App() {
 
     return (
 
-        <
-        Routes >
-        <
-        Route path = "/"
-        element = {
-            < Main / >
-        }
-        /> <
-        Route path = "/test"
-        element = {
-            < Cgtest / >
-        }
-        /> <
-        Route path = "*"
-        element = {
-            < Error / >
-        }
-        /> <
-        /Routes>
+      <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/test" element={<Cgtest />} />
+      <Route path="*" element={<Error /> } />
+    </Routes>
 
     );
 }
