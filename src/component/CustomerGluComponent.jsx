@@ -4,6 +4,7 @@ import { EventEmitter } from "events";
 
 const CustomerGluComponent = ({
   userId = "",
+  anonymousId = "",
   gluToken,
   children,
   region = "in",
@@ -12,21 +13,27 @@ const CustomerGluComponent = ({
   const scriptLoadedRef = useRef(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const handleSDKStatusCompleted = () => {
+    console.log("SDK_STATUS_COMPLETED",isLoading);
+    setIsLoading(false);
+    console.log("SDK_STATUS",isLoading);
+
+  };
+
   useEffect(() => {
     const writeKey = "";
-    const handleSDKStatusCompleted = () => {
-      setIsLoading(false);
-    };
-
+   
     eventEmitter.on("SDK_STATUS_COMPLETED", handleSDKStatusCompleted);
 
     if (!scriptLoadedRef.current) {
       const script = document.createElement("script");
       region === "us"
         ? (script.src =
-            "https://assets.customerglu.com/scripts/us/staging/sdk/sdk.js")
+            "http://192.168.29.184:8081/sdk.js")
+        : region === 'me'
+        ? (script.src ='https://assets-me.customerglu.com/scripts/sdk/v0.0.1/sdk.js')
         : (script.src =
-            "https://assets.customerglu.com/scripts/sdk/v5.5/sdk.js");
+            "http://127.0.0.1:8081/sdk.js");
       script.async = true;
 
       script.onload = () => {
@@ -34,7 +41,7 @@ const CustomerGluComponent = ({
 
         if (window.CustomerGlu) {
           const userToken = gluToken;
-          new window.CustomerGlu(writeKey, { userId, userToken }, {});
+          new window.CustomerGlu(writeKey, { userId ,anonymousId ,userToken }, {});
           console.log("CustomerGlu initialized");
         } else {
           console.error("CustomerGlu is not available");
@@ -54,7 +61,7 @@ const CustomerGluComponent = ({
       };
     } else {
       if (window.CustomerGlu) {
-        new window.CustomerGlu(writeKey || undefined, { userId, gluToken }, {});
+        new window.CustomerGlu(writeKey || undefined, { userId, anonymousId ,gluToken }, {});
         console.log("CustomerGlu initialized");
       } else {
         console.error("CustomerGlu is not available");
@@ -63,7 +70,7 @@ const CustomerGluComponent = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return isLoading ? <>{children}</> : <></>;
+  return isLoading ? <div></div> : <></>;
 };
 
 CustomerGluComponent.propTypes = {
